@@ -1,3 +1,5 @@
+package com.company;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,6 +13,8 @@ public class Main {
 
         while(chooseOption) {                                       //Petla powtarzajaca
 
+            String ownRaceName = "ERROR";                               //Wprowadzenie zmiennych i sprawdzanie bledow
+            String enemyRaceName = "ERROR";
 
             System.out.println("\n");
 
@@ -22,11 +26,14 @@ public class Main {
             System.out.println("1) Siebie?");
             System.out.println("2) Przeciwnika?");
             System.out.println("3) Oba wypadki?");
+            System.out.println(" ");
 
 
-            String odpWstep = Wstep.nextLine();                      // Odczytanie inputu
+            int odpWstep = Wstep.nextInt();                      // Odczytanie inputu
             System.out.println("Wybrales opcje " + odpWstep);        // Output wybranej opcji
-            int intOdpWstep = Integer.parseInt(odpWstep);            //Zmienna String (random) na int
+            System.out.println(" ");
+
+            //TODO add class Wstep
 
             System.out.println("\n");
 
@@ -40,129 +47,43 @@ public class Main {
 
             System.out.println("\n");
 
-            String ownRace = "ERROR";                               //Wprowadzenie zmiennych i sprawdzanie bledow
-            String enemyRace = "ERROR";
+            //TODO add class Random
 
-            if (intOdpWstep == 1 || intOdpWstep == 3) {
-                switch (intRandomOwn) {
-                    case 0:
-                        ownRace = "Lesne Elfy";                     //Wybrana rasa dla wylosowanego numeru
-                        break;                                      //W przypadku wyniku 0, zostaje wybrana ta rasa
-                    case 1:
-                        ownRace = "Bretonia";
-                        break;
-                    case 2:
-                        ownRace = "Zielonoskorzy";
-                        break;
-                    case 3:
-                        ownRace = "Imperium";
-                        break;
-                    case 4:
-                        ownRace = "Wysokie Elfy";
-                        break;
-                    case 5:
-                        ownRace = "Mroczne Elfy";
-                        break;
-                    case 6:
-                        ownRace = "Krolowie Grobowcow";
-                        break;
-                    case 7:
-                        ownRace = "Wampiry";
-                        break;
-                    case 8:
-                        ownRace = "Jaszczuroludzie";
-                        break;
-                    case 9:
-                        ownRace = "Krasnoludy";
-                        break;
-                    case 10:
-                        ownRace = "Skaveni";
-                        break;
-                    case 11:
-                        ownRace = "Norska";
-                        break;
-                    case 12:
-                        ownRace = "Chaos";
-                        break;
-                    case 13:
-                        ownRace = "Zwierzoludzie";
-                        break;
-                    case 14:
-                        ownRace = "Vampiraci";
-                        break;
+            if (odpWstep == 1 || odpWstep == 3) {
 
-                }
+                Race ownRace = new Race(); //nowy obiekt
+                ownRace.randomResult = intRandomOwn; //przypisanie wartości z losowania
+                ownRace.raceName = ownRaceName; //jesli blad to error
+                ownRace.setRaceName(); //wywolanie metody
 
-                System.out.println("Twoja rasa to " + ownRace);             //Output rasy
-            }         //Funkcja oddaja wybrana przez losowanie rase
+                System.out.println("Twoja rasa to " + ownRace.raceName); //odczyt rasy
+            }
+                System.out.println(" ");
 
-            System.out.println("\n");
+            if (odpWstep == 2 || odpWstep == 3) {
 
-            if (intOdpWstep == 2 || intOdpWstep == 3) {
-                switch (intRandomEnemy) {
-                    case 0:
-                        enemyRace = "Lesne Elfy";
-                        break;
-                    case 1:
-                        enemyRace = "Bretonia";
-                        break;
-                    case 2:
-                        enemyRace = "Zielonoskorzy";
-                        break;
-                    case 3:
-                        enemyRace = "Imperium";
-                        break;
-                    case 4:
-                        enemyRace = "Wysokie Elfy";
-                        break;
-                    case 5:
-                        enemyRace = "Mroczne Elfy";
-                        break;
-                    case 6:
-                        enemyRace = "Krolowie Grobowcow";
-                        break;
-                    case 7:
-                        enemyRace = "Wampiry";
-                        break;
-                    case 8:
-                        enemyRace = "Jaszczuroludzie";
-                        break;
-                    case 9:
-                        enemyRace = "Krasnoludy";
-                        break;
-                    case 10:
-                        enemyRace = "Skaveni";
-                        break;
-                    case 11:
-                        enemyRace = "Norska";
-                        break;
-                    case 12:
-                        enemyRace = "Chaos";
-                        break;
-                    case 13:
-                        enemyRace = "Zwierzoludzie";
-                        break;
-                    case 14:
-                        enemyRace = "Vampiraci";
-                        break;
+                Race enemyRace = new Race();
+                enemyRace.randomResult = intRandomEnemy;
+                enemyRace.raceName = enemyRaceName; //jesli blad to error
+                enemyRace.setRaceName();
 
-                }
-
-                System.out.println("Rasa przeciwnika to " + enemyRace);
+                System.out.println("Rasa przeciwnika to " + enemyRace.raceName);
             }
 
             System.out.println("\n");
 
+            //TODO add class Ending
 
             Scanner repeat = new Scanner(System.in);                //Obiekt skanujacy ponowienie dzialania programu
 
             System.out.println("Jeszcze raz 1)");
             System.out.println("Konczymy 2)");
+            System.out.println(" ");
 
-            String odpRepeat = repeat.nextLine();                   //Input na String
-            int intRepeat = Integer.parseInt(odpRepeat);            //String na int
+            int odpRepeat = repeat.nextInt();                   //Input na String
 
-            if(intRepeat == 2){                                     //Funkcja sprawdzajaca ponowienie programu
+
+            if(odpRepeat == 2){                                     //Funkcja sprawdzajaca ponowienie programu
                 System.out.println("No to do nastepnego");
                 chooseOption = false;                               //Zmiana opcji powtarzania na false skutkuje koncem
             } else {                                                //dzialania programu
