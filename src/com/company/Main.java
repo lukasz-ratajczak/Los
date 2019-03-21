@@ -6,6 +6,7 @@ public class Main {
 
 
         boolean chooseOption = true;                                //Warunek powtarzalnosci
+        boolean con = true;
         int odpWstep, intRandomOwn, intRandomEnemy;
 
 
@@ -21,12 +22,28 @@ public class Main {
 
 
             System.out.println("\n");
+            Randomize randomizeOwn = new Randomize();
+            Randomize randomizeEnemy = new Randomize();
 
-            Randomize randomizeOwn = new Randomize();               //obiekt losujacy rase
             intRandomOwn = randomizeOwn.randomize();
-
-            Randomize randomizeEnemy = new Randomize();             //obiekt losujacy rase
             intRandomEnemy = randomizeEnemy.randomize();
+
+
+                if( intRandomOwn == intRandomEnemy){
+                    if(intRandomEnemy >= 8){
+                        intRandomEnemy = intRandomEnemy / 2;
+                    }
+                    else if (intRandomEnemy <= 7){
+                        intRandomEnemy = intRandomEnemy * 2;
+                    }
+                    else {
+                        intRandomEnemy++;
+                    }
+                }
+
+
+            //TODO add randomize extra - diffrent values for each Randomize!
+            //TODO UP!!!!!! czesciowo zrobione. Else daje 0, poprawic
 
 
             System.out.println("Twoj numer to " + intRandomOwn);    //Output random
@@ -34,7 +51,7 @@ public class Main {
 
             System.out.println("\n");
 
-            //TODO add randomize extra - diffrent values for each Randomize!
+
 
             Option option = new Option();                           //obiekt przypisujacy nazwe wylosowanej rasy
             option.option(odpWstep, intRandomOwn, intRandomEnemy, ownRaceName, enemyRaceName);
