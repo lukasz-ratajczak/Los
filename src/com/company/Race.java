@@ -1,10 +1,10 @@
 package com.company;
 
 public class Race {
-    public int randomResult;
-    public String raceName;
 
-public String setRaceName(){
+
+
+public String setRaceName(int randomResult, String raceName){
 
     switch (randomResult) {
         case 0:
@@ -52,10 +52,14 @@ public String setRaceName(){
         case 14:
             raceName = "Vampiraci";
             break;
+
+            default:
+                raceName = "!!! ERROR !!!  --   Blad losowania!!!";
     }
 
     return raceName;
 }         //Funkcja oddaja wybrana przez losowanie rase
+
 
 }
 
