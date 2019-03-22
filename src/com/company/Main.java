@@ -22,28 +22,19 @@ public class Main {
 
 
             System.out.println("\n");
+
             Randomize randomizeOwn = new Randomize();
             Randomize randomizeEnemy = new Randomize();
 
-            intRandomOwn = randomizeOwn.randomize();
-            intRandomEnemy = randomizeEnemy.randomize();
+
+            do {                                                //petla nie pozwalajaca na przypisanie tych samych
+                intRandomOwn = randomizeOwn.randomize();        //wartosci dla ciebie i przeciwnika
+                intRandomEnemy = randomizeEnemy.randomize();
+
+            } while (intRandomOwn == intRandomEnemy);
 
 
-                if( intRandomOwn == intRandomEnemy){
-                    if(intRandomEnemy >= 8){
-                        intRandomEnemy = intRandomEnemy / 2;
-                    }
-                    else if (intRandomEnemy <= 7){
-                        intRandomEnemy = intRandomEnemy * 2;
-                    }
-                    else {
-                        intRandomEnemy++;
-                    }
-                }
 
-
-            //TODO add randomize extra - diffrent values for each Randomize!
-            //TODO UP!!!!!! czesciowo zrobione. Else daje 0, poprawic
 
 
             System.out.println("Twoj numer to " + intRandomOwn);    //Output random
