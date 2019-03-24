@@ -7,7 +7,10 @@ public class Main {
 
         boolean chooseOption = true;                                //Warunek powtarzalnosci
         boolean con = true;
-        int odpWstep, intRandomOwn, intRandomEnemy;
+        int odpWstep, intRandomOwn, intRandomEnemy, memoryRandomOwn, memoryRandomEnemy;
+
+        memoryRandomOwn = 100;
+        memoryRandomEnemy = 100;
 
 
         while(chooseOption) {                                       //Petla powtarzajaca
@@ -25,16 +28,16 @@ public class Main {
 
             Randomize randomizeOwn = new Randomize();
             Randomize randomizeEnemy = new Randomize();
-
+            
 
             do {                                                //petla nie pozwalajaca na przypisanie tych samych
                 intRandomOwn = randomizeOwn.randomize();        //wartosci dla ciebie i przeciwnika
                 intRandomEnemy = randomizeEnemy.randomize();
 
-            } while (intRandomOwn == intRandomEnemy);
+            } while ((intRandomOwn == intRandomEnemy) || ((memoryRandomOwn == intRandomOwn) || (memoryRandomEnemy == intRandomEnemy)));
 
-
-
+            memoryRandomOwn = intRandomOwn;
+            memoryRandomEnemy = intRandomEnemy;
 
 
             System.out.println("Twoj numer to " + intRandomOwn);    //Output random
